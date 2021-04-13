@@ -95,7 +95,7 @@ if (window.location.hostname == "www.youtube.com") {
       var d = document.getElementsByTagName("tp-yt-paper-dialog");
       for (var i = 0; i < d.length; ++i) {
         if (FindVisibleElByTextNode(d[i], "yt-formatted-string", "In YouTube anmelden")) {
-          var b = FindElByAriaLabel(d[i], "paper-button", "Nein danke");
+          var b = d[i].querySelector('[role="button"][aria-label="Nein danke"]');
           if (b) {
             console.log("AntiNerv: YouTube Anmeldung übersprungen");
             b.click();
