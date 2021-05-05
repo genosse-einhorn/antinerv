@@ -157,3 +157,26 @@ if (window.location.hostname == "www.openstreetmap.org") {
     }
   }, 500);
 }
+
+// zeit.de
+if (window.location.hostname == "www.zeit.de") {
+    RunMultiTimes(function() {
+        var d = document.querySelector(".consent");
+        if (d && IsElementVisible(d)) {
+            var b = FindVisibleElByTextNode(d, "button", "Einverstanden");
+            if (b) {
+                b.click();
+            }
+        }
+    }, 100, 100);
+
+    RunMultiTimes(function() {
+        var f = document.querySelector(".paywall-footer");
+        if (f) {
+            var c = FindElByAriaLabel(f, "button", "schließen");
+            if (c) {
+                c.click();
+            }
+        }
+    }, 100, 100);
+}
