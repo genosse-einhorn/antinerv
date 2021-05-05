@@ -83,7 +83,7 @@ function FakeClick(node) {
 }
 
 
-// google cookies
+// google cookie wall on search page
 if (window.location.hostname == "www.google.com") {
   RunMultiTimes(function() {
     var t = FindVisibleElByTextNode(document, "div", "Bevor Sie zur Google Suche weitergehen");
@@ -97,6 +97,17 @@ if (window.location.hostname == "www.google.com") {
       }
     }
   }, 100, 50);
+}
+
+// google separate consent wall
+if (window.location.hostname == "consent.google.com") {
+    RunMultiTimes(function() {
+        var b = FindElByAriaLabel(document, "button", "In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen");
+        if (b) {
+            console.log("AntiNerv: Akzeptiere Google Cookies");
+            b.click();
+        }
+    }, 100, 50);
 }
 
 // YouTube
