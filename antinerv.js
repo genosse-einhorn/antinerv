@@ -69,6 +69,19 @@ function FindElByAriaLabel(parent, tagname, label) {
   return null;
 }
 
+function TriggerMouseEvent(node, eventType) {
+    var e = document.createEvent('MouseEvents');
+    e.initEvent(eventType, true, true);
+    node.dispatchEvent(e);
+}
+
+function FakeClick(node) {
+    TriggerMouseEvent(node, "mouseover");
+    TriggerMouseEvent(node, "mousedown");
+    TriggerMouseEvent(node, "mouseup");
+    TriggerMouseEvent(node, "click");
+}
+
 
 // google cookies
 if (window.location.hostname == "www.google.com") {
@@ -94,11 +107,11 @@ if (window.location.hostname == "www.youtube.com") {
     RunMultiTimes(function() {
       var d = document.getElementsByTagName("tp-yt-paper-dialog");
       for (var i = 0; i < d.length; ++i) {
-        if (FindVisibleElByTextNode(d[i], "yt-formatted-string", "In YouTube anmelden")) {
+        if (d[i].style.display != 'none' && FindVisibleElByTextNode(d[i], "yt-formatted-string", "In YouTube anmelden")) {
           var b = d[i].querySelector('[role="button"][aria-label="Nein danke"]');
           if (b) {
             console.log("AntiNerv: YouTube Anmeldung übersprungen");
-            b.click();
+            FakeClick(b);
           }
         }
       }
