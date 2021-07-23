@@ -86,16 +86,29 @@ function FakeClick(node) {
 // google cookie wall on search page
 if (window.location.hostname == "www.google.com") {
   RunMultiTimes(function() {
-    var t = FindVisibleElByTextNode(document, "div", "Bevor Sie zur Google Suche weitergehen");
-    if (t) {
-      var p = t.parentNode.parentNode.parentNode;
+        // old version
+        var t = FindVisibleElByTextNode(document, "div", "Bevor Sie zur Google Suche weitergehen");
+        if (t) {
+            var p = t.parentNode.parentNode.parentNode;
 
-      var b = FindElByInnerText(p, "button", "Ich stimme zu");
-      if (b) {
-        console.log("AntiNerv: Akzeptiere Google Cookies");
-        b.click();
-      }
-    }
+            var b = FindElByInnerText(p, "button", "Ich stimme zu");
+            if (b) {
+                console.log("AntiNerv: Akzeptiere Google Cookies");
+                b.click();
+            }
+        }
+
+        // new version (occasionally appearing since 07/2021 for me)
+        var t = FindVisibleElByTextNode(document, "h1", "Bevor Sie zur Google Suche weitergehen");
+        if (t) {
+            var p = t.parentNode.parentNode.parentNode;
+
+            var b = FindElByInnerText(p, "button", "Ich stimme zu");
+            if (b) {
+                console.log("AntiNerv: Akzeptiere Google Cookies");
+                b.click();
+            }
+        }
   }, 100, 50);
 }
 
