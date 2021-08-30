@@ -226,3 +226,17 @@ if (window.location.hostname == "www.zeit.de") {
         }
     }, 100, 100);
 }
+
+// reddit over 18
+if (window.location.href.startsWith("https://old.reddit.com/over18")) {
+    var b = document.querySelector("button[name=\"over18\"][value=\"yes\"]")
+    if (b) {
+        b.click();
+    }
+}
+
+// old reddit
+if (window.location.href.startsWith("https://www.reddit.com")) {
+    console.log("neues reddit gefunden!");
+    window.location.replace("https://old.reddit.com" + window.location.href.substr(22));
+}
