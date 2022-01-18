@@ -113,7 +113,7 @@ if (window.location.hostname == "www.google.com") {
 }
 
 // google separate consent wall
-if (window.location.hostname == "consent.google.com") {
+if (window.location.hostname == "consent.google.com" || window.location.hostname == "consent.google.de") {
     RunMultiTimes(function() {
         var b = FindElByAriaLabel(document, "button", "In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen");
         if (b) {
