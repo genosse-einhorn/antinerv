@@ -240,3 +240,34 @@ if (window.location.href.startsWith("https://www.reddit.com")) {
     console.log("neues reddit gefunden!");
     window.location.replace("https://old.reddit.com" + window.location.href.substr(22));
 }
+
+// twitter
+if (window.location.href.startsWith("https://twitter.com")) {
+    console.log("AntiNerv: Twitter gefunden");
+
+    // login wall
+    setInterval(function() {
+        if (document.querySelector("html").style.overflow == "hidden") {
+            console.log("AntiNerv: Modales PopUp gefunden");
+
+            document.querySelector("html").style.removeProperty("overflow");
+
+            var d = document.querySelector("div[data-testid=\"sheetDialog\"]");
+            if (d.innerText.match(/\nAnmelden\nRegistrieren$/)) {
+                d.parentNode.remove();
+            }
+        }
+    }, 2000);
+
+    // cookie annoyance
+    RunMultiTimes(function() {
+        var bs = document.querySelectorAll("div[role=\"button\"]");
+        for (var i = 0; i < bs.length; ++i) {
+            var b = bs[i];
+            var c = FindVisibleElByTextNode(b, "span", "Unwesentliche Cookies ablehnen");
+            if (c) {
+                c.click();
+            }
+        }
+    }, 100, 100);
+}
