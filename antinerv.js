@@ -153,7 +153,7 @@ if (window.location.hostname == "www.youtube.com") {
     // consent wall v2
     RunMultiTimes(function() {
       var b = FindElByAriaLabel(document, "tp-yt-paper-button", "In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen");
-      if (b) {
+      if (b && IsElementVisible(b)) {
         console.log("AntiNerv: YouTube consent");
         b.click();
       }
