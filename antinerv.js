@@ -271,3 +271,16 @@ if (window.location.href.startsWith("https://twitter.com")) {
         }
     }, 100, 100);
 }
+
+// microsoft docs
+if (window.location.href.startsWith("https://docs.microsoft.com/de-de/")) {
+    console.log("AntiNerv: deutsches MSDN gefunden");
+
+    RunMultiTimes(function() {
+        var l = document.querySelector("a.button[title=\"Auf Englisch lesen\"]");
+        if (l) {
+            console.log("wechsle zu englischer Seite");
+            l.click();
+        }
+    }, 100, 100);
+}
