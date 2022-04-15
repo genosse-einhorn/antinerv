@@ -146,7 +146,10 @@ if (window.location.hostname == "www.youtube.com") {
       var b = FindElByAriaLabel(document, "button", "Autoplay aktiviert");
       if (b) {
         console.log("AntiNerv: YouTube Autoplay deaktiviert");
-        b.click();
+        t = b.querySelector("div[aria-checked=\"true\"]");
+        if (t) {
+          t.click();
+        }
       }
     }, 1000, 20);
 
