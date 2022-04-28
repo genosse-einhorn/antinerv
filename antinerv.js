@@ -157,7 +157,16 @@ if (window.location.hostname == "www.youtube.com") {
     RunMultiTimes(function() {
       var b = FindElByAriaLabel(document, "tp-yt-paper-button", "In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen");
       if (b && IsElementVisible(b)) {
-        console.log("AntiNerv: YouTube consent");
+        console.log("AntiNerv: YouTube consent v2");
+        b.click();
+      }
+    }, 100, 50);
+
+    // consent wall v3
+    RunMultiTimes(function() {
+      var b = FindElByAriaLabel(document, "tp-yt-paper-button", "Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken ablehnen");
+      if (b && IsElementVisible(b)) {
+        console.log("AntiNerv: YouTube consent v3");
         b.click();
       }
     }, 100, 50);
