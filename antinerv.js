@@ -109,6 +109,18 @@ if (window.location.hostname == "www.google.com") {
                 b.click();
             }
         }
+
+        // another new version (since 06/2022 for me)
+        var t = FindVisibleElByTextNode(document, "h1", "Bevor Sie zu Google weitergehen");
+        if (t) {
+            var p = t.parentNode.parentNode.parentNode;
+
+            var b = FindElByInnerText(p, "button", "Alle ablehnen");
+            if (b) {
+                console.log("AntiNerv: Lehne Google Cookies ab");
+                b.click();
+            }
+        }
   }, 100, 50);
 }
 
