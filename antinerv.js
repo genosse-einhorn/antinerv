@@ -133,6 +133,18 @@ if (window.location.hostname == "consent.google.com" || window.location.hostname
             b.click();
         }
     }, 100, 50);
+
+    // new version (since 07/2022 for me)
+    var t = FindVisibleElByTextNode(document, "h1", "Bevor Sie zu Google weitergehen");
+    if (t) {
+        var p = t.parentNode.parentNode.parentNode;
+
+        var b = FindElByInnerText(p, "button", "Alle ablehnen");
+        if (b) {
+            console.log("AntiNerv: Lehne Google Cookies ab");
+            b.click();
+        }
+    }
 }
 
 // YouTube
@@ -190,13 +202,25 @@ if (window.location.hostname == "www.youtube.com") {
 
 // YouTube consent wall
 if (window.location.hostname == "consent.youtube.com") {
-  RunMultiTimes(function() {
-    var b = FindElByAriaLabel(document, "button", "In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen");
-    if (b) {
-      console.log("AntiNerv: YouTube consent");
-      b.click();
+    RunMultiTimes(function() {
+        var b = FindElByAriaLabel(document, "button", "In die Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken einwilligen");
+        if (b) {
+            console.log("AntiNerv: YouTube consent");
+            b.click();
+        }
+    }, 100, 50);
+
+    // new version (since 07/2022 for me)
+    var t = FindVisibleElByTextNode(document, "h1", "Bevor Sie zu YouTube weitergehen");
+    if (t) {
+        var p = t.parentNode.parentNode.parentNode;
+
+        var b = FindElByInnerText(p, "button", "Alle ablehnen");
+        if (b) {
+            console.log("AntiNerv: Lehne YouTube Cookies ab");
+            b.click();
+        }
     }
-  }, 100, 50);
 }
 
 // golem
