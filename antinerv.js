@@ -194,6 +194,15 @@ if (window.location.hostname == "www.youtube.com") {
         b.click();
       }
     }, 100, 50);
+
+    // consent wall v3.1
+    RunMultiTimes(function() {
+      var b = FindElByAriaLabel(document, "button", "Verwendung von Cookies und anderen Daten zu den beschriebenen Zwecken ablehnen");
+      if (b && IsElementVisible(b)) {
+        console.log("AntiNerv: YouTube consent v3.1");
+        b.click();
+      }
+    }, 100, 50);
   }
 
   document.addEventListener("yt-navigate-finish", function() { yt(); } );
