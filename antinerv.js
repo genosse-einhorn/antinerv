@@ -310,7 +310,7 @@ if (window.location.href.startsWith("https://twitter.com")) {
             document.querySelector("html").style.removeProperty("overflow");
 
             var d = document.querySelector("div[data-testid=\"sheetDialog\"]");
-            if (d.innerText.match(/\nAnmelden\nRegistrieren$/)) {
+            if (d.innerText.match(/\nAnmelden\n(Du hast noch keinen Account\? )?Registrieren$/)) {
                 d.parentNode.remove();
             }
         }
