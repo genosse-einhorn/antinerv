@@ -299,7 +299,9 @@ if (window.location.href.startsWith("https://www.reddit.com")) {
 }
 
 // twitter
-if (window.location.href.startsWith("https://twitter.com")) {
+if (window.location.href.startsWith("https://twitter.com")
+        || window.location.href.startsWith("https://mobile.twitter.com")
+        || window.location.href.startsWith("https://www.twitter.com")) {
     console.log("AntiNerv: Twitter gefunden");
 
     // login wall
