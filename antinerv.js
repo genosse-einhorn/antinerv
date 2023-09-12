@@ -253,10 +253,12 @@ if (window.location.hostname == "www.wetter.com") {
 // osm welcome
 if (window.location.hostname == "www.openstreetmap.org") {
   setTimeout(function() {
-    var c = document.querySelector("#sidebar .welcome .icon.close");
-    if (c && IsElementVisible(c)) {
-      console.log("AntiNerv: OSM welcome banner");
-      c.click();
+    var c = document.querySelectorAll("#sidebar .btn-close");
+    for (var i = 0; i < c.length; ++i) {
+      if (IsElementVisible(c[i])) {
+        console.log("AntiNerv: OSM banner");
+        c[i].click();
+      }
     }
   }, 500);
 }
