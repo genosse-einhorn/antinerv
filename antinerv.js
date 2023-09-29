@@ -295,7 +295,8 @@ if (window.location.href.startsWith("https://old.reddit.com/over18")) {
 }
 
 // old reddit
-if (window.location.href.startsWith("https://www.reddit.com")) {
+if (window.location.href.startsWith("https://www.reddit.com/r/")
+  || window.location.href.startsWith("https://www.reddit.com/u")) {
     console.log("neues reddit gefunden!");
     window.location.replace("https://old.reddit.com" + window.location.href.substr(22));
 }
