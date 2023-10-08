@@ -346,3 +346,14 @@ if (window.location.href.startsWith("https://docs.microsoft.com/de-de/")) {
         }
     }, 100, 100);
 }
+
+// kleinanzeigen
+if (window.location.href.startsWith("https://www.kleinanzeigen.de/")) {
+    RunMultiTimes(function() {
+        var x = document.querySelector(".login-overlay .j-overlay-close");
+        if (IsElementVisible(x)) {
+            console.log("ebay kleinanzeigen: verstecke login-overlay");
+            x.click();
+        }
+    }, 100, 100);
+}
