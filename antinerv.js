@@ -22,7 +22,7 @@ function RunMultiTimes(func, interval, count) {
 
 
 function IsElementVisible(elem) {
-  return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+  return elem && !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 }
 
 function FindElByTextNode(parent, tagname, text) {
@@ -357,3 +357,12 @@ if (window.location.href.startsWith("https://www.kleinanzeigen.de/")) {
         }
     }, 100, 100);
 }
+
+// login mit google
+RunMultiTimes(function() {
+    var x = document.querySelector('iframe[title="Dialogfeld „Über Google anmelden“"]');
+    if (IsElementVisible(x)) {
+        console.log("verstecke google login");
+        x.parentElement.remove();
+    }
+}, 100, 100);
