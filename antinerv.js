@@ -366,3 +366,24 @@ RunMultiTimes(function() {
         x.parentElement.remove();
     }
 }, 100, 100);
+
+// ebay
+if (window.location.href.startsWith("https://www.ebay.de/")) {
+    // login mit google
+    RunMultiTimes(function() {
+        var x = FindElByAriaLabel(document, "div", 'eBay mit Google nutzen');
+        if (IsElementVisible(x)) {
+            console.log("verstecke google login");
+            x.parentElement.remove();
+        }
+    }, 100, 100);
+
+    // cookies
+    RunMultiTimes(function() {
+        var x = FindElByAriaLabel(document, 'button', 'Alle Datenschutzbestimmungen und Einstellungen ablehnen');
+        if (IsElementVisible(x)) {
+            console.log("lehne cookies ab");
+            x.click();
+        }
+    }, 100, 100);
+}
