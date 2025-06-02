@@ -349,10 +349,20 @@ if (window.location.href.startsWith("https://docs.microsoft.com/de-de/")) {
 
 // kleinanzeigen
 if (window.location.href.startsWith("https://www.kleinanzeigen.de/")) {
+    // Alte Version
     RunMultiTimes(function() {
         var x = document.querySelector(".login-overlay .j-overlay-close");
         if (IsElementVisible(x)) {
             console.log("ebay kleinanzeigen: verstecke login-overlay");
+            x.click();
+        }
+    }, 100, 100);
+
+    // Neue Version (min. seit 06/2025)
+    RunMultiTimes(function() {
+        var x = FindElByAriaLabel(document, 'button', 'Willkommens-Popup Schließen');
+        if (IsElementVisible(x)) {
+            console.log("ebay kleinanzeigen: verstecke login-overlay v2");
             x.click();
         }
     }, 100, 100);
