@@ -8,16 +8,17 @@
 
 // run multi times helper
 function RunMultiTimes(func, interval, count) {
-  var c = 0;
-  var r = function() {
-  func();
-    if (c < count) {
-      c++;
-      setTimeout(r, interval);
-    }
-  }
+    var c = 0;
+    var r = function() {
+        func();
 
-  r();
+        if (c < count) {
+            c++;
+            setTimeout(r, interval);
+        }
+    }
+
+    r();
 }
 
 
