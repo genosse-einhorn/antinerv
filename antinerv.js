@@ -27,6 +27,9 @@ function IsElementVisible(elem) {
 }
 
 function FindElByTextNode(parent, tagname, text) {
+  if (!parent)
+    return null;
+
   var els = parent.getElementsByTagName(tagname);
   for (var i = 0; i < els.length; ++i) {
     if (els[i].firstChild && els[i].firstChild.nodeType == 3 && els[i].firstChild.textContent == text) {
@@ -38,6 +41,9 @@ function FindElByTextNode(parent, tagname, text) {
 }
 
 function FindVisibleElByTextNode(parent, tagname, text) {
+  if (!parent)
+    return null;
+
   var els = parent.getElementsByTagName(tagname);
   for (var i = 0; i < els.length; ++i) {
     if (IsElementVisible(els[i]) && els[i].firstChild && els[i].firstChild.nodeType == 3 && els[i].firstChild.textContent == text) {
@@ -49,6 +55,9 @@ function FindVisibleElByTextNode(parent, tagname, text) {
 }
 
 function FindElByInnerText(parent, tagname, text) {
+  if (!parent)
+    return null;
+
   var els = parent.getElementsByTagName(tagname);
   for (var i = 0; i < els.length; ++i) {
     if (els[i].innerText == text) {
@@ -60,6 +69,9 @@ function FindElByInnerText(parent, tagname, text) {
 }
 
 function FindElByAriaLabel(parent, tagname, label) {
+  if (!parent)
+    return null;
+
   var els = parent.getElementsByTagName(tagname);
   for (var i = 0; i < els.length; ++i) {
     if (els[i].getAttribute("aria-label") == label) {
