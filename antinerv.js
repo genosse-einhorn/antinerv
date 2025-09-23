@@ -379,6 +379,25 @@ if (window.location.href.startsWith("https://www.kleinanzeigen.de/")) {
             x.click();
         }
     }, 100, 100);
+
+    // Version ab ca. 09/2025
+    RunMultiTimes(function() {
+        var x = FindElByAriaLabel(document.querySelector("#gdpr-banner"), "button", 'Datenschutzeinstellungen anpassen oder ablehnen');
+        if (IsElementVisible(x)) {
+            console.log("kleinanzeigen: werbe-erpressung erkannt!");
+            x.click();
+        }
+    }, 100, 100);
+}
+
+if (window.location.href.startsWith("https://www.kleinanzeigen.de/gdpr")) {
+    RunMultiTimes(function() {
+        var x = FindElByAriaLabel(document, "button", 'Datenschutzbestimmungen und Einstellungen ablehnen');
+        if (IsElementVisible(x)) {
+            console.log("kleinanzeigen: werbe-erpressung wird abgelehnt");
+            x.click();
+        }
+    }, 500, 100);
 }
 
 // login mit google
