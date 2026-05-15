@@ -10,9 +10,9 @@
 function RunMultiTimes(func, interval, count) {
     var c = 0;
     var r = function() {
-        func();
+        var v = func();
 
-        if (c < count) {
+        if (v !== RunMultiTimes.QUIT && c < count) {
             c++;
             setTimeout(r, interval);
         }
@@ -20,6 +20,8 @@ function RunMultiTimes(func, interval, count) {
 
     r();
 }
+
+RunMultiTimes.QUIT = {};
 
 
 function IsElementVisible(elem) {
@@ -183,10 +185,16 @@ if (window.location.hostname == "www.youtube.com") {
       var b = FindElByAriaLabel(document, "button", "Autoplay aktiviert");
       if (b) {
         console.log("AntiNerv: YouTube Autoplay deaktiviert");
-        t = b.querySelector("div[aria-checked=\"true\"]");
-        if (t) {
-          t.click();
-        }
+        setTimeout(function() {
+          console.log("AntiNerv: Now really click autoplay");
+
+          // search btn element again because youtube might have recreated it
+          var b = FindElByAriaLabel(document, "button", "Autoplay aktiviert");
+          if (b) {
+            b.click();
+          }
+        }, 5000);
+        return RunMultiTimes.QUIT;
       }
     }, 1000, 20);
 
