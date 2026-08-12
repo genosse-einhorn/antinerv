@@ -315,12 +315,12 @@ if (window.location.href.startsWith("https://old.reddit.com/over18")) {
     }
 }
 
-// old reddit
-if (window.location.href.startsWith("https://www.reddit.com/r/")
-  || window.location.href.startsWith("https://www.reddit.com/u")) {
-    console.log("neues reddit gefunden!");
-    window.location.replace("https://old.reddit.com" + window.location.href.substr(22));
-}
+// old reddit - disable now that it requires login
+// if (window.location.href.startsWith("https://www.reddit.com/r/")
+//   || window.location.href.startsWith("https://www.reddit.com/u")) {
+//     console.log("neues reddit gefunden!");
+//     window.location.replace("https://old.reddit.com" + window.location.href.substr(22));
+// }
 
 // twitter
 if (window.location.href.startsWith("https://twitter.com")
