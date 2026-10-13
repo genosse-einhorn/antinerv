@@ -184,16 +184,20 @@ if (window.location.hostname == "www.youtube.com") {
     RunMultiTimes(function() {
       var b = FindElByAriaLabel(document, "button", "Autoplay aktiviert");
       if (b) {
-        console.log("AntiNerv: YouTube Autoplay deaktiviert");
-        setTimeout(function() {
-          console.log("AntiNerv: Now really click autoplay");
+        console.log("AntiNerv: YouTube Autoplay gefunden, deaktiviere gleich");
+        // click with delay, since button may be recreated or reenabled
+        // but try multiple times to handle short videos as well as laggy YouTube
+        for (var t = 1000; t <= 10000; t += 1000) {
+          setTimeout(function() {
+            console.log("AntiNerv: Now really click autoplay");
 
-          // search btn element again because youtube might have recreated it
-          var b = FindElByAriaLabel(document, "button", "Autoplay aktiviert");
-          if (b) {
-            b.click();
-          }
-        }, 5000);
+            // search btn element again because youtube might have recreated it
+            var b = FindElByAriaLabel(document, "button", "Autoplay aktiviert");
+            if (b) {
+              b.click();
+            }
+          }, t);
+        }
         return RunMultiTimes.QUIT;
       }
     }, 1000, 20);
